@@ -11,6 +11,16 @@ namespace WebAPI.Data
             Database.EnsureCreated();
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Username)
+                .IsUnique()
+                .HasFilter(null);
+        }
+
         public DbSet<Cliente> Cliente { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }

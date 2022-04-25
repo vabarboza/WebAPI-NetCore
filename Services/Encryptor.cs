@@ -11,13 +11,13 @@ namespace WebAPI.Services
     {
         public static string MD5Hash(string text)
         {
-            MD5 md5 = new MD5CryptoServiceProvider();
+            SHA256 sha = new SHA256CryptoServiceProvider();
 
             //compute hash from the bytes of text  
-            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
+            sha.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
 
             //get hash result after compute it  
-            byte[] result = md5.Hash;
+            byte[] result = sha.Hash;
 
             StringBuilder strBuilder = new StringBuilder();
             for (int i = 0; i < result.Length; i++)
